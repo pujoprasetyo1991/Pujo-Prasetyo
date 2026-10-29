@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LKPD Interaktif Digital Kimia - Senyawa Turunan Alkana</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Progress Bar -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- Header / Navigasi Ringkas -->
+  <header class="app-header">
+    <div class="header-content">
+      <span class="badge-fase">Fase F - Kelas XII</span>
+      <h1 class="header-title">LKPD Digital: Senyawa Turunan Alkana</h1>
+    </div>
+    <nav class="nav-steps">
+      <button class="nav-btn active" onclick="switchTab('sampul')">Sampul</button>
+      <button class="nav-btn" onclick="switchTab('identitas')">Identitas</button>
+      <button class="nav-btn" onclick="switchTab('kurikulum')">Kurikulum</button>
+      <button class="nav-btn" onclick="switchTab('materi')">Materi</button>
+      <button class="nav-btn" onclick="switchTab('aktivitas')">Aktivitas</button>
+      <button class="nav-btn" onclick="switchTab('contoh')">Contoh Soal</button>
+      <button class="nav-btn" onclick="switchTab('latihan')">Latihan</button>
+      <button class="nav-btn" onclick="switchTab('evaluasi')">Evaluasi</button>
+      <button class="nav-btn" onclick="switchTab('refleksi')">Refleksi</button>
+    </nav>
+  </header>
+
+  <main class="main-container">
+
+    <!-- SEKSI 1: SAMPUL -->
+    <section id="sampul" class="tab-content active">
+      <div class="hero-card">
+        <div class="hero-text">
+          <h2>Lembar Kerja Peserta Didik (LKPD) Interaktif</h2>
+          <h3 class="materi-title">Senyawa Turunan Alkana</h3>
+          <p class="hero-subtitle">Struktur, Tata Nama, Sifat, Reaksi Identifikasi, dan Kegunaan dalam Kehidupan Sehari-hari</p>
+          <div class="meta-grid">
+            <div><strong>Satuan Pendidikan:</strong> SMA Negeri 2 Samarinda</div>
+            <div><strong>Mata Pelajaran:</strong> Kimia</div>
+            <div><strong>Kelas / Semester:</strong> XII / Genap</div>
+            <div><strong>Guru Pengampu:</strong> Pujo Prasetyo, S.Pd.</div>
+            <div><strong>Tahun Ajaran:</strong> 2026/2027</div>
+            <div><strong>KKTP:</strong> 70 | <strong>Alokasi:</strong> 4 JP</div>
+          </div>
+          <button class="btn-primary btn-large" onclick="switchTab('identitas')">🚀 Mulai Belajar</button>
+        </div>
+        <div class="hero-image">
+          <div class="molecule-illustration">
+            <div class="atom carbon">C</div>
+            <div class="bond"></div>
+            <div class="atom oxygen">O</div>
+            <div class="bond"></div>
+            <div class="atom hydrogen">H</div>
+          </div>
+          <p class="img-caption">Model Gugus Fungsi Organik</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEKSI 2: IDENTITAS PESERTA DIDIK -->
+    <section id="identitas" class="tab-content">
+      <div class="card">
+        <h2>📋 Form Identitas Peserta Didik</h2>
+        <p class="instruction">Isi data diri Anda dengan benar sebelum mengakses materi dan tugas.</p>
+        <form id="formIdentitas" onsubmit="event.preventDefault(); simpanIdentitas();">
+          <div class="form-group">
+            <label for="namaLengkap">Nama Lengkap <span class="req">*</span></label>
+            <input type="text" id="namaLengkap" placeholder="Masukkan nama sesuai presensi" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="kelas">Kelas <span class="req">*</span></label>
+              <select id="kelas" required>
+                <option value="">-- Pilih Kelas --</option>
+                <option value="XII MIPA 1">XII MIPA 1</option>
+                <option value="XII MIPA 2">XII MIPA 2</option>
+                <option value="XII MIPA 3">XII MIPA 3</option>
+                <option value="XII MIPA 4">XII MIPA 4</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="noAbsen">Nomor Absen <span class="req">*</span></label>
+              <input type="number" id="noAbsen" min="1" max="50" placeholder="Contoh: 12" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="namaSekolah">Nama Sekolah</label>
+            <input type="text" id="namaSekolah" value="SMA Negeri 2 Samarinda" readonly>
+          </div>
+          <div class="alert-box info">
+            🔒 Data pribadi Anda hanya digunakan untuk pencatatan nilai evaluasi pembelajaran oleh guru.
+          </div>
+          <div class="btn-group">
+            <button type="submit" class="btn-primary">Simpan & Lanjutkan ➔</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- SEKSI 3: INFORMASI KURIKULUM -->
+    <section id="kurikulum" class="tab-content">
+      <div class="card">
+        <h2>🎯 Kerangka Kurikulum Merdeka</h2>
+        <div class="accordion">
+          <div class="acc-item">
+            <h3>Capaian Pembelajaran (CP) - Elemen Pemahaman Kimia</h3>
+            <p>Peserta didik mampu mengamati, menyelidiki, dan menjelaskan fenomena sehari-hari yang berkaitan dengan struktur, sifat, tata nama, reaksi, serta kegunaan senyawa organik khususnya turunan alkana.</p>
+          </div>
+          <div class="acc-item">
+            <h3>Tujuan Pembelajaran (TP)</h3>
+            <ul>
+              <li>Menganalisis struktur dan gugus fungsi senyawa turunan alkana (alkanol, alkoksi alkana, alkanal, alkanon, asam alkanoat, alkil alkanoat, dan haloalkana).</li>
+              <li>Merumuskan tata nama IUPAC dan Trivial senyawa turunan alkana.</li>
+              <li>Membedakan keisomeran fungsi dan posisi pada senyawa turunan alkana.</li>
+              <li>Menganalisis reaksi identifikasi (pembeda) antara alkohol-eter dan aldehid-keton.</li>
+            </ul>
+          </div>
+          <div class="acc-item">
+            <h3>Kriteria Ketercapaian Tujuan Pembelajaran (KKTP)</h3>
+            <p>Mencapai nilai minimal <strong>70</strong> pada evaluasi akhir dengan ketuntasan pemahaman aspek konseptual dan prosedural.</p>
+          </div>
+          <div class="acc-item">
+            <h3>Dimensi Profil Pelajar Pancasila</h3>
+            <p>Bernalar Kritis, Mandiri, dan Gotong Royong dalam diskusi kelompok/aktivitas.</p>
+          </div>
+        </div>
+        <div class="btn-group">
+          <button class="btn-secondary" onclick="switchTab('identitas')">🔀 Kembali</button>
+          <button class="btn-primary" onclick="switchTab('materi')">Lanjut ke Materi ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEKSI 4: MATERI PEMBELAJARAN -->
+    <section id="materi" class="tab-content">
+      <div class="card">
+        <h2>🧪 Materi Pembelajaran: Senyawa Turunan Alkana</h2>
+        
+        <div class="concept-box">
+          <h3>1. Pertanyaan Pemantik & Fenomena Kontekstual</h3>
+          <p>Mengapa alkohol (isopropanol/etanol) yang diusapkan ke kulit terasa dingin dan cepat menguap? Mengapa pembersih cat kuku (aseton) memiliki bau khas dan mampu melarutkan cat? Keduanya adalah contoh <strong>Senyawa Turunan Alkana</strong>—senyawa alkana yang satu atau lebih atom H-nya digantikan oleh gugus fungsi tertentu.</p>
+        </div>
+
+        <h3>2. Pengelompokan Gugus Fungsi & Keisomeran Fungsi</h3>
+        <p>Senyawa turunan alkana dikelompokkan berdasarkan gugus fungsinya dan memiliki pasangan isomer fungsi (rumus molekul sama, gugus fungsi berbeda):</p>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Gugus Fungsi</th>
+                <th>Rumus Umum</th>
+                <th>Golongan I (IUPAC)</th>
+                <th>Golongan II (Isomer Fungsi)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>-OH / -O-</td>
+                <td>C<sub>n</sub>H<sub>2n+2</sub>O</td>
+                <td>Alkanol (Alkohol)</td>
+                <td>Alkoksi Alkana (Eter)</td>
+              </tr>
+              <tr>
+                <td>-CHO / -CO-</td>
+                <td>C<sub>n</sub>H<sub>2n</sub>O</td>
+                <td>Alkanal (Aldehid)</td>
+                <td>Alkanon (Keton)</td>
+              </tr>
+              <tr>
+                <td>-COOH / -COO-</td>
+                <td>C<sub>n</sub>H<sub>2n</sub>O<sub>2</sub></td>
+                <td>Asam Alkanoat (Asam Karboksilat)</td>
+                <td>Alkil Alkanoat (Ester)</td>
+              </tr>
+              <tr>
+                <td>-X (Halogen)</td>
+                <td>C<sub>n</sub>H<sub>2n+1</sub>X</td>
+                <td>Haloalkana (Alkil Halida)</td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>3. Reaksi Analisis & Identifikasi</h3>
+        <ul>
+          <li><strong>Pembeda Alkohol & Eter:</strong> Alkohol bereaksi dengan logam Natrium ($Na$) membebaskan gas $H_2$ dan bereaksi dengan $PCl_5$ menghasilkan gas $HCl$. Eter tidak bereaksi dengan logam $Na$.</li>
+          <li><strong>Pembeda Aldehid & Keton:</strong> Aldehid bereaksi positif dengan Pereaksi Fehling (endapan merah bata $Cu_2O$) dan Pereaksi Tollens (cermin perak $Ag$). Keton tidak bereaksi dengan kedua pereaksi tersebut.</li>
+        </ul>
+
+        <div class="summary-box">
+          <h4>📌 Rangkuman Penting</h4>
+          <p>Sifat fisika dan kimia senyawa turunan alkana sangat ditentukan oleh polaritas gugus fungsi dan kemampuan membentuk ikatan hidrogen. Alkohol dan Asam Karboksilat memiliki titik didih lebih tinggi dibanding eter/ester yang bersesuaian karena adanya ikatan hidrogen antarmolekul.</p>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn-secondary" onclick="switchTab('kurikulum')">🔀 Kembali</button>
+          <button class="btn-primary" onclick="switchTab('aktivitas')">Lanjut ke Aktivitas ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEKSI 5: AKTIVITAS PESERTA DIDIK -->
+    <section id="aktivitas" class="tab-content">
+      <div class="card">
+        <h2>🔍 Aktivitas Discovery Learning: Analisis Gugus & Reaksi</h2>
+        <p class="instruction">Lakukan analisis fenomena berikut dan lengkapi tabel pengamatan di bawah ini.</p>
+
+        <div class="activity-block">
+          <h3>Aktivitas 1: Klasifikasi Pasangan Isomer Fungsi</h3>
+          <p>Diberikan molekul dengan rumus molekul $C_3H_8O$. Tentukan gugus fungsi dan kelompok senyawanya!</p>
+          
+          <div class="form-group">
+            <label>1. Senyawa A ($CH_3-CH_2-CH_2-OH$)</label>
+            <textarea id="act1_a" rows="2" placeholder="Tentukan nama IUPAC, gugus fungsi, dan sifat reaksinya terhadap logam Na..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>2. Senyawa B ($CH_3-O-CH_2-CH_3$)</label>
+            <textarea id="act1_b" rows="2" placeholder="Tentukan nama IUPAC, gugus fungsi, dan sifat reaksinya terhadap logam Na..."></textarea>
+          </div>
+        </div>
+
+        <div class="activity-block">
+          <h3>Aktivitas 2: Tabel Analisis Pembedaan Aldehid dan Keton</h3>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Pengujian</th>
+                  <th>Propanal (Aldehid)</th>
+                  <th>Propanon (Keton)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Uji Tollens ($Ag_2O / NH_3$)</td>
+                  <td><input type="text" id="act2_1" placeholder="Hasil pengamatan..."></td>
+                  <td><input type="text" id="act2_2" placeholder="Hasil pengamatan..."></td>
+                </tr>
+                <tr>
+                  <td>Uji Fehling ($CuO$)</td>
+                  <td><input type="text" id="act2_3" placeholder="Hasil pengamatan..."></td>
+                  <td><input type="text" id="act2_4" placeholder="Hasil pengamatan..."></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <button class="btn-primary" onclick="simpanAktivitas()">💾 Simpan Catatan Aktivitas</button>
+        <div id="actFeedback" class="alert-box success hidden">Catatan aktivitas berhasil disimpan secara lokal!</div>
+
+        <div class="btn-group">
+          <button class="btn-secondary" onclick="switchTab('materi')">🔀 Kembali</button>
+          <button class="btn-primary" onclick="switchTab('contoh')">Lanjut ke Contoh Soal ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEKSI 6: CONTOH SOAL & PEMBAHASAN -->
+    <section id="contoh" class="tab-content">
+      <div class="card">
+        <h2>💡 Contoh Soal & Pembahasan Terstruktur</h2>
+
+        <!-- Example 1 -->
+        <div class="example-box">
+          <span class="badge-diff easy">Tingkat: Dasar</span>
+          <h4>Contoh 1: Tata Nama Alkanol</h4>
+          <p><strong>Pertanyaan:</strong> Tentukan nama IUPAC dari senyawa berikut: $CH_3-CH(OH)-CH_2-CH_3$</p>
+          <button class="btn-toggle" onclick="toggleSolution('sol1')">👁️ Tampilkan/Sembunyikan Pembahasan</button>
+          <div id="sol1" class="solution-content hidden">
+            <hr>
+            <p><strong>Langkah Penyelesaian:</strong></p>
+            <ol>
+              <li>Tentukan rantai C terpanjang yang mengikat gugus -OH $\rightarrow$ 4 atom C (Butanol).</li>
+              <li>Penomoran dimulai dari ujung yang paling dekat dengan gugus -OH $\rightarrow$ gugus -OH berada di nomor 2.</li>
+              <li>Nama IUPAC: <strong>2-butanol</strong>.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Example 2 -->
+        <div class="example-box">
+          <span class="badge-diff medium">Tingkat: Sedang</span>
+          <h4>Contoh 2: Reaksi Identifikasi Senyawa $C_3H_6O$</h4>
+          <p><strong>Pertanyaan:</strong> Suatu senyawa $X$ rumus molekul $C_3H_6O$ bereaksi positif dengan pereaksi Fehling membentuk endapan merah bata. Apakah nama senyawa $X$ tersebut?</p>
+          <button class="btn-toggle" onclick="toggleSolution('sol2')">👁️ Tampilkan/Sembunyikan Pembahasan</button>
+          <div id="sol2" class="solution-content hidden">
+            <hr>
+            <p><strong>Langkah Penyelesaian:</strong></p>
+            <ol>
+              <li>Rumus molekul $C_3H_6O$ memenuhi rumus $C_nH_{2n}O$ (Aldehid atau Keton).</li>
+              <li>Uji Fehling positif (endapan merah bata $Cu_2O$) menandakan senyawa tersebut adalah golongan <strong>Alkanal (Aldehid)</strong>.</li>
+              <li>Aldehid dengan 3 atom C bernama <strong>Propanal</strong>.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Example 3 -->
+        <div class="example-box">
+          <span class="badge-diff hard">Tingkat: Lanjut</span>
+          <h4>Contoh 3: Keisomeran Fungsi & Reaksi Esterifikasi</h4>
+          <p><strong>Pertanyaan:</strong> Tuliskan persamaan reaksi antara asam etanoat dengan etanol menggunakan katalis $H_2SO_4$ pekat, serta sebutkan nama produk ester yang dihasilkan!</p>
+          <button class="btn-toggle" onclick="toggleSolution('sol3')">👁️ Tampilkan/Sembunyikan Pembahasan</button>
+          <div id="sol3" class="solution-content hidden">
+            <hr>
+            <p><strong>Langkah Penyelesaian:</strong></p>
+            <p>Reaksi esterifikasi (pembentukan ester):</p>
+            <p>$$CH_3COOH + CH_3CH_2OH \xrightarrow{H_2SO_4} CH_3COOCH_2CH_3 + H_2O$$</p>
+            <p>Produk ester yang terbentuk adalah <strong>Etil Etanoat</strong> (atau etil asetat).</p>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn-secondary" onclick="switchTab('aktivitas')">🔀 Kembali</button>
+          <button class="btn-primary" onclick="switchTab('latihan')">Lanjut ke Latihan Interaktif ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEKSI 7: LATIHAN INTERAKTIF (FORMATIF) -->
+    <section id="latihan" class="tab-content">
+      <div class="card">
+        <h2>✏️ Latihan FormatIF Interaktif</h2>
+        <p class="instruction">Latihan ini bertujuan menguji pemahaman awal Anda. Nilai latihan ini bersifat mandiri dan tidak dikirim ke guru.</p>
+        
+        <form id="formLatihan">
+          <!-- Q1 PG -->
+          <div class="quiz-item">
+            <p><strong>1. Gugus fungsi dari senyawa eter (alkoksi alkana) adalah...</strong></p>
+            <label><input type="radio" name="l1" value="A"> -OH</label><br>
+            <label><input type="radio" name="l1" value="B"> -O-</label><br>
+            <label><input type="radio" name="l1" value="C"> -CHO</label><br>
+            <label><input type="radio" name="l1" value="D"> -COOH</label>
+            <div id="fb_l1" class="quiz-fb"></div>
+          </div>
+
+          <!-- Q2 BS -->
+          <div class="quiz-item">
+            <p><strong>2. Senyawa alkanol dan alkoksi alkana merupakan pasangan isomer fungsi dengan rumus umum $C_nH_{2n+2}O$.</strong></p>
+            <label><input type="radio" name="l2" value="BENAR"> Benar</label><br>
+            <label><input type="radio" name="l2" value="SALAH"> Salah</label>
+            <div id="fb_l2" class="quiz-fb"></div>
+          </div>
+
+          <!-- Q3 Isian -->
+          <div class="quiz-item">
+            <p><strong>3. Nama IUPAC untuk senyawa dengan rumus $CH_3-CO-CH_3$ adalah...</strong></p>
+            <input type="text" id="l3" placeholder="Ketik nama senyawa...">
+            <div id="fb_l3" class="quiz-fb"></div>
+          </div>
+
+          <button type="button" class="btn-primary" onclick="periksaLatihan()">Check Jawaban Latihan</button>
+        </form>
+
+        <div class="btn-group">
+          <button class="btn-secondary" onclick="switchTab('contoh')">🔀 Kembali</button>
+          <button class="btn-primary" onclick="switchTab('evaluasi')">Siap Evaluasi Akhir ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEKSI 8: EVALUASI AKHIR -->
+    <section id="evaluasi" class="tab-content">
+      <div class="card">
+        <h2>📝 Evaluasi Akhir Pembelajaran</h2>
+        <p class="instruction">Kerjakan 10 soal evaluasi berikut secara mandiri. Nilai akan dihitung secara otomatis dan dikirimkan ke database guru.</p>
+        
+        <div class="alert-box warning">
+          ⚠️ <strong>Penting:</strong> Pastikan Anda telah mengisi Identitas Peserta Didik sebelum menekan tombol Kirim Evaluasi.
+        </div>
+
+        <form id="formEvaluasi">
+          <!-- Soal 1 -->
+          <div class="eval-q">
+            <p><strong>1. Pasangan senyawa berikut yang merupakan isomer fungsi adalah...</strong></p>
+            <label><input type="radio" name="ev1" value="A"> Propanol dan Propanal</label><br>
+            <label><input type="radio" name="ev1" value="B"> Etanol dan Metoksi Metana</label><br>
+            <label><input type="radio" name="ev1" value="C"> Asam Propanoat dan Propanon</label><br>
+            <label><input type="radio" name="ev1" value="D"> Etanol dan Asam Etanoat</label>
+          </div>
+
+          <!-- Soal 2 -->
+          <div class="eval-q">
+            <p><strong>2. Senyawa dengan rumus molekul $C_4H_{10}O$ yang tidak bereaksi dengan logam Natrium adalah...</strong></p>
+            <label><input type="radio" name="ev2" value="A"> 1-butanol</label><br>
+            <label><input type="radio" name="ev2" value="B"> 2-butanol</label><br>
+            <label><input type="radio" name="ev2" value="C"> Dietil Eter (Etoksi Etana)</label><br>
+            <label><input type="radio" name="ev2" value="D"> 2-metil-2-propanol</label>
+          </div>
+
+          <!-- Soal 3 -->
+          <div class="eval-q">
+            <p><strong>3. Oksidasi kuat pada senyawa 1-propanol menggunakan $KMnO_4 / H^+$ akan menghasilkan...</strong></p>
+            <label><input type="radio" name="ev3" value="A"> Propanon</label><br>
+            <label><input type="radio" name="ev3" value="B"> Asam Propanoat</label><br>
+            <label><input type="radio" name="ev3" value="C"> Propanal</label><br>
+            <label><input type="radio" name="ev3" value="D"> Dipropil Eter</label>
+          </div>
+
+          <!-- Soal 4 -->
+          <div class="eval-q">
+            <p><strong>4. Pereaksi yang digunakan untuk membedakan gugus alkanal (aldehid) dan alkanon (keton) adalah...</strong></p>
+            <label><input type="radio" name="ev4" value="A"> Indikator PP</label><br>
+            <label><input type="radio" name="ev4" value="B"> Larutan Biuret</label><br>
+            <label><input type="radio" name="ev4" value="C"> Pereaksi Fehling dan Tollens</label><br>
+            <label><input type="radio" name="ev4" value="D"> Gas $HCl$ pekat</label>
+          </div>
+
+          <!-- Soal 5 -->
+          <div class="eval-q">
+            <p><strong>5. Nama IUPAC dari senyawa $CH_3-CH_2-COO-CH_3$ adalah...</strong></p>
+            <label><input type="radio" name="ev5" value="A"> Metil Propanoat</label><br>
+            <label><input type="radio" name="ev5" value="B"> Etil Etanoat</label><br>
+            <label><input type="radio" name="ev5" value="C"> Propil Metanoat</label><br>
+            <label><input type="radio" name="ev5" value="D"> Asam Butanoat</label>
+          </div>
+
+          <!-- Soal 6 -->
+          <div class="eval-q">
+            <p><strong>6. Senyawa haloalkana yang sering digunakan sebagai bahan pendingin (refrigeran) namun dibatasi karena merusak lapisan ozon adalah...</strong></p>
+            <label><input type="radio" name="ev6" value="A"> Kloroform ($CHCl_3$)</label><br>
+            <label><input type="radio" name="ev6" value="B"> Freon / CFC ($CF_2Cl_2$)</label><br>
+            <label><input type="radio" name="ev6" value="C"> Karbon Tetraklorida ($CCl_4$)</label><br>
+            <label><input type="radio" name="ev6" value="D"> Iodoform ($CHI_3$)</label>
+          </div>
+
+          <!-- Soal 7 -->
+          <div class="eval-q">
+            <p><strong>7. Hasil reaksi antara asam karboksilat dengan alkohol dinamakan reaksi...</strong></p>
+            <label><input type="radio" name="ev7" value="A"> Saponifikasi</label><br>
+            <label><input type="radio" name="ev7" value="B"> Esterifikasi</label><br>
+            <label><input type="radio" name="ev7" value="C"> Halogenasi</label><br>
+            <label><input type="radio" name="ev7" value="D"> Oksidasi</label>
+          </div>
+
+          <!-- Soal 8 -->
+          <div class="eval-q">
+            <p><strong>8. Senyawa $C_3H_6O_2$ yang memberikan warna merah pada kertas lakmus biru adalah...</strong></p>
+            <label><input type="radio" name="ev8" value="A"> Metil Etanoat</label><br>
+            <label><input type="radio" name="ev8" value="B"> Asam Propanoat</label><br>
+            <label><input type="radio" name="ev8" value="C"> Etil Metanoat</label><br>
+            <label><input type="radio" name="ev8" value="D"> Propanol</label>
+          </div>
+
+          <!-- Soal 9 -->
+          <div class="eval-q">
+            <p><strong>9. Senyawa alkohol sekunder jika dioksidasi dengan larutan $K_2Cr_2O_7$ dalam suasana asam akan menghasilkan...</strong></p>
+            <label><input type="radio" name="ev9" value="A"> Aldehid</label><br>
+            <label><input type="radio" name="ev9" value="B"> Keton</label><br>
+            <label><input type="radio" name="ev9" value="C"> Asam Karboksilat</label><br>
+            <label><input type="radio" name="ev9" value="D"> Eter</label>
+          </div>
+
+          <!-- Soal 10 -->
+          <div class="eval-q">
+            <p><strong>10. Formalin yang digunakan sebagai pengawet spesimen biologi merupakan larutan 40% dari senyawa...</strong></p>
+            <label><input type="radio" name="ev10" value="A"> Metanal (Formaldehid)</label><br>
+            <label><input type="radio" name="ev10" value="B"> Etanal</label><br>
+            <label><input type="radio" name="ev10" value="C"> Propanon</label><br>
+            <label><input type="radio" name="ev10" value="D"> Metanol</label>
+          </div>
+
+          <!-- Soal Uraian / Analisis -->
+          <div class="eval-q">
+            <p><strong>11. [Soal Uraian/Analisis] Jelaskan secara singkat mengapa titik didih etanol ($C_2H_5OH$) jauh lebih tinggi dibandingkan dimetil eter ($CH_3-O-CH_3$) padahal keduanya memiliki rumus molekul yang sama ($C_2H_6O$)!</strong></p>
+            <textarea id="evUraian" rows="4" placeholder="Ketikkan alasan konseptual Anda mengenai ikatan hidrogen dan polaritas molekul..."></textarea>
+          </div>
+
+          <div class="btn-group">
+            <button type="button" class="btn-primary btn-large" onclick="prosesDanKirimEvaluasi()">📤 Hitung Nilai & Kirim Ke Guru</button>
+          </div>
+        </form>
+
+        <!-- Hasil Evaluasi Card -->
+        <div id="resultCard" class="card result-card hidden">
+          <h3>📊 Hasil Ringkasan Evaluasi</h3>
+          <div class="score-display">
+            <div class="score-number" id="displayScore">0</div>
+            <div class="score-status" id="displayStatus">PENDING</div>
+          </div>
+          <div class="score-details">
+            <p>Jumlah Soal Objektif: <strong>10</strong></p>
+            <p>Jawaban Benar: <strong id="displayBenar">0</strong> | Jawaban Salah: <strong id="displaySalah">0</strong></p>
+            <p>Waktu Pengerjaan: <span id="displayDuration">0 menit</span></p>
+            <p>ID Pengiriman Unik: <code id="displaySubmissionId">-</code></p>
+          </div>
+          <div id="sendStatus" class="alert-box info">Mengirim data ke Google Sheets...</div>
+          <button id="btnRetry" class="btn-secondary hidden" onclick="kirimUlangEvaluasi()">🔄 Coba Kirim Ulang</button>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn-secondary" onclick="switchTab('latihan')">🔀 Kembali</button>
+          <button class="btn-primary" onclick="switchTab('refleksi')">Lanjut ke Refleksi ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEKSI 9: REFLEKSI PESERTA DIDIK -->
+    <section id="refleksi" class="tab-content">
+      <div class="card">
+        <h2>💭 Refleksi Diri Peserta Didik</h2>
+        <form id="formRefleksi" onsubmit="event.preventDefault(); simpanRefleksi();">
+          <div class="form-group">
+            <label>1. Konsep Kimia mana mengenai Turunan Alkana yang paling Anda pahami?</label>
+            <textarea id="ref1" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>2. Bagian mana yang menurut Anda masih sulit atau membingungkan?</label>
+            <textarea id="ref2" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>3. Bagaimanakah penerapan senyawa turunan alkana yang paling dekat dengan kehidupan sehari-hari Anda?</label>
+            <textarea id="ref3" rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary">💾 Simpan Refleksi</button>
+          <div id="refFeedback" class="alert-box success hidden">Refleksi Anda berhasil disimpan!</div>
+        </form>
+
+        <div class="btn-group">
+          <button class="btn-secondary" onclick="switchTab('evaluasi')">🔀 Kembali ke Evaluasi</button>
+          <button class="btn-primary" onclick="switchTab('sampul')">🏠 Kembali ke Halaman Utama</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>&copy; 2026 SMAN 2 Samarinda - Mata Pelajaran Kimia | Pengembang: Pujo Prasetyo, S.Pd.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
